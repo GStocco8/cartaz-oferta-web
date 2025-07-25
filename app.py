@@ -16,7 +16,7 @@ MODELOS = {
 }
 
 # Caminho para as fontes personalizadas
-FONT_DIR = "static/fonts"
+FONT_DIR = "static/fonts/"
 
 class CartazPDF(FPDF):
     def header(self):

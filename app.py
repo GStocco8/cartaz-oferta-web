@@ -30,9 +30,9 @@ class CartazPDF(FPDF):
         self.image(MODELOS[item["modelo"]], x=0, y=0, w=210, h=297)
 
         # Adiciona fontes personalizadas
-        self.add_font("JustAnotherHand", "", os.path.join(FONT_DIR, "JustAnotherHand-Regular.ttf"), uni=True)
-        self.add_font("CaveatBrush", "", os.path.join(FONT_DIR, "CaveatBrush-Regular.ttf"), uni=True)
-        self.add_font("Michegar", "", os.path.join(FONT_DIR, "Michegar.ttf"), uni=True)
+        self.add_font("JustAnotherHand", "", "static/fonts/JustAnotherHand-Regular.ttf", uni=True)
+        self.add_font("CaveatBrush", "", "static/fonts/CaveatBrush-Regular.ttf", uni=True)
+        self.add_font("Michegar", "", "static/fonts/Michegar.ttf", uni=True)
 
         # Extrair campos com segurança
         produto = str(item.get("produto", "")).strip().upper()

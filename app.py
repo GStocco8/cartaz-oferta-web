@@ -30,9 +30,9 @@ class CartazPDF(FPDF):
         self.image(MODELOS[item["modelo"]], x=0, y=0, w=210, h=297)
 
         # Adiciona fontes personalizadas
-        self.add_font("JustAnotherHand", "", "static/fonts/JustAnotherHand-Regular.ttf", uni=True)
-        self.add_font("CaveatBrush", "", "static/fonts/CaveatBrush-Regular.ttf", uni=True)
-        self.add_font("Michegar", "", "static/fonts/Michegar.ttf", uni=True)
+        # self.add_font("JustAnotherHand", "", "static/fonts/JustAnotherHand-Regular.ttf", uni=True)
+        # self.add_font("CaveatBrush", "", "static/fonts/CaveatBrush-Regular.ttf", uni=True)
+        # self.add_font("Michegar", "", "static/fonts/Michegar.ttf", uni=True)
 
         # Extrair campos com segurança
         produto = str(item.get("produto", "")).strip().upper()
@@ -46,18 +46,18 @@ class CartazPDF(FPDF):
         parte1 = partes[0]
         parte2 = partes[1] if len(partes) > 1 else ""
 
-        self.set_font("JustAnotherHand", "", 110)
+        self.set_font("Arial", "B", 110)
         self.set_text_color(0, 0, 0)
         self.set_xy(10, 80)
         self.cell(190, 15, parte1, align="C")
 
         if parte2:
-            self.set_font("JustAnotherHand", "", 80)
+            self.set_font("Arial", "B", 80)
             self.set_xy(10, 110)
             self.cell(190, 15, parte2, align="C")
 
         # Preço normal
-        self.set_font("JustAnotherHand", "", 32)
+        self.set_font("Arial", "B", 32)
         self.set_text_color(0, 0, 0)
         self.set_xy(20, 135)
         self.cell(170, 10, f"de R$ {preco_normal} por", align="L")
@@ -94,7 +94,7 @@ class CartazPDF(FPDF):
         # self.cell(0, 0, "R$")
 
         # Valor inteiro grande - preto sombra
-        self.set_font("Michegar", "", tamanho_valor)
+        self.set_font("Arial", "B", tamanho_valor)
         self.set_text_color(0, 0, 0)
         self.set_xy(58, 188)
         self.cell(80, 30, valor_inteiro, align="R")
@@ -106,7 +106,7 @@ class CartazPDF(FPDF):
 
         # Centavos pequenos - preto sombra
         if centavos:
-            self.set_font("Michegar", "", 120)
+            self.set_font("Arial", "B", 120)
             self.set_text_color(0, 0, 0)
             self.set_xy(142, 175)
             self.cell(0, 0, f",{centavos}")
@@ -117,19 +117,19 @@ class CartazPDF(FPDF):
             self.cell(0, 0, f",{centavos}")
 
         # Unidade - preto sombra
-        self.set_font("Michegar", "", 80)
+        self.set_font("Arial", "B", 80)
         self.set_text_color(0, 0, 0)
         self.set_xy(11, 221)
         self.cell(175, 15, tipo, align="R")
 
         # Unidade - branco
-        self.set_font("Michegar", "", 80)
+        self.set_font("Arial", "B", 80)
         self.set_text_color(255, 255, 255)
         self.set_xy(10, 220)
         self.cell(175, 15, tipo, align="R")
 
         # Validade
-        self.set_font("JustAnotherHand", "", 32)
+        self.set_font("Arial", "B", 32)
         self.set_text_color(0, 0, 0)
         self.set_xy(100, 265)
         self.cell(100, 10, f"Oferta válida: {validade}", align="L")
